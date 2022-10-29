@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Riddle1 from "./pages/Riddle1";
+import Riddle2 from "./pages/Riddle2";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="riddle1" element={<Riddle1 />} />
+          <Route path="riddle2" element={<Riddle2 />} />
+          <Route path="*" element={<Navigate to="/" />}  />3
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
